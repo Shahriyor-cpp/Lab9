@@ -139,15 +139,15 @@ using namespace std;
 // #10
 int reverseDigits(int number,int reversed = 0) {
     if (number == 0) {
-        return 0;
+        return reversed;
     }
     return reverseDigits(number/10, reversed*10+number%10);
 }
 bool palindrome(int n) {
-    if (n < 0) {
-        return false;
-    }else if (n==reverseDigits(n)) {
+    if (n==reverseDigits(n)) {
         return true;
+    }else {
+        return false;
     }
 }
 int main() {
@@ -159,5 +159,39 @@ int main() {
     else {
         cout << "Not a palindrome" << endl;
     }
+    return 0;
+}
+//#11
+
+bool prime(int n, int divisor = 2) {
+    if (n <= 1){
+         return false; 
+    }
+
+    if (n == 2){
+         return true; 
+         }
+
+    if (n % divisor == 0){
+         return false;
+         }
+
+    if (divisor > pow(n,0.5)) {
+        return true;
+        }
+
+    return prime(n, divisor + 1);
+}
+
+int main() {
+    int n;
+    cin >> n;
+
+    if (prime(n)) {
+        cout << "true";
+    } else {
+        cout << "false";
+    }
+
     return 0;
 }
